@@ -23,7 +23,7 @@ body{
     color:#fff;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
     position:sticky;
@@ -76,7 +76,7 @@ nav a:hover{
     outline:none;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero{
     min-height:430px;
@@ -85,10 +85,23 @@ nav a:hover{
     align-items:center;
     position:relative;
     overflow:hidden;
+
     background:
-        radial-gradient(circle at 80% 30%,rgba(255,61,113,.25),transparent 35%),
-        radial-gradient(circle at 20% 70%,rgba(91,80,255,.20),transparent 35%),
-        linear-gradient(135deg,#111522,#080a0f);
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255,61,113,.25),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(91,80,255,.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #111522,
+            #080a0f
+        );
 }
 
 .hero-content{
@@ -152,7 +165,7 @@ nav a:hover{
     border:1px solid #303542;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 
 .container{
     width:90%;
@@ -181,7 +194,7 @@ section{
     font-size:13px;
 }
 
-/* AD */
+/* ================= IKLAN ================= */
 
 .ad{
     margin:35px 0 10px;
@@ -195,7 +208,7 @@ section{
     font-size:12px;
 }
 
-/* FEATURE */
+/* ================= FEATURE ================= */
 
 .feature{
     display:grid;
@@ -208,9 +221,19 @@ section{
     border-radius:14px;
     overflow:hidden;
     position:relative;
+
     background:
-        linear-gradient(to top,rgba(0,0,0,.9),transparent 70%),
-        linear-gradient(135deg,#342047,#101827);
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.9),
+            transparent 70%
+        ),
+        linear-gradient(
+            135deg,
+            #342047,
+            #101827
+        );
+
     border:1px solid #272d39;
 }
 
@@ -243,10 +266,18 @@ section{
     min-height:140px;
     border-radius:14px;
     padding:22px;
+
     display:flex;
     flex-direction:column;
     justify-content:end;
-    background:linear-gradient(135deg,#19202e,#10131a);
+
+    background:
+        linear-gradient(
+            135deg,
+            #19202e,
+            #10131a
+        );
+
     border:1px solid #272d39;
 }
 
@@ -258,7 +289,7 @@ section{
     color:#ff668c;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
 
 .cards{
     display:grid;
@@ -281,11 +312,18 @@ section{
 
 .card-image{
     height:170px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     background:
-        radial-gradient(circle,#303748,#171b25);
+        radial-gradient(
+            circle,
+            #303748,
+            #171b25
+        );
+
     color:#626a78;
     font-size:12px;
     letter-spacing:2px;
@@ -306,7 +344,7 @@ section{
     line-height:1.5;
 }
 
-/* GAMES */
+/* ================= GAMES ================= */
 
 .games{
     display:grid;
@@ -331,10 +369,13 @@ section{
     width:65px;
     height:65px;
     margin:auto auto 12px;
+
     border-radius:15px;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     background:#252b37;
     color:#777f8d;
 }
@@ -349,7 +390,7 @@ section{
     margin-top:6px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer{
     margin-top:70px;
@@ -370,7 +411,7 @@ footer p{
     font-size:13px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media(max-width:850px){
 
@@ -454,7 +495,7 @@ footer p{
 
 <body>
 
-<!-- HEADER -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -478,7 +519,7 @@ footer p{
 </header>
 
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
@@ -489,7 +530,7 @@ footer p{
         </div>
 
         <h1>
-            ENTER THE<br>
+            CENTER THE<br>
             <span>GAME WORLD.</span>
         </h1>
 
@@ -501,11 +542,17 @@ footer p{
 
         <div class="hero-buttons">
 
-            <a href="#highlight" class="btn btn-primary">
+            <a
+                href="#highlight"
+                class="btn btn-primary"
+            >
                 Lihat Highlight
             </a>
 
-            <a href="#wallpaper" class="btn btn-secondary">
+            <a
+                href="#wallpaper"
+                class="btn btn-secondary"
+            >
                 Explore Wallpaper
             </a>
 
@@ -519,20 +566,22 @@ footer p{
 <div class="container">
 
 
-<!-- IKLAN -->
+<!-- ================= IKLAN ================= -->
 
 <div class="ad">
     SLOT IKLAN
 </div>
 
 
-<!-- FEATURED -->
+<!-- ================= FEATURED ================= -->
 
 <section id="highlight">
 
     <div class="section-header">
 
-        <h2>🔥 Highlight Terbaru</h2>
+        <h2>
+            🔥 Highlight Terbaru
+        </h2>
 
         <a href="#">
             Lihat Semua →
@@ -543,13 +592,18 @@ footer p{
 
     <div class="feature">
 
+
         <div class="feature-main">
 
             <div class="feature-info">
 
-                <small>FEATURED HIGHLIGHT</small>
+                <small>
+                    FEATURED HIGHLIGHT
+                </small>
 
-                <h3>Epic Gaming Moment</h3>
+                <h3>
+                    Epic Gaming Moment
+                </h3>
 
                 <p>
                     Momen terbaik dari dunia gaming.
@@ -562,21 +616,32 @@ footer p{
 
         <div class="feature-side">
 
-            <div class="mini-feature">
-
-                <small>VIDEO</small>
-
-                <h3>Insane Gameplay</h3>
-
-            </div>
 
             <div class="mini-feature">
 
-                <small>SHORT</small>
+                <small>
+                    VIDEO
+                </small>
 
-                <h3>Epic Short Video</h3>
+                <h3>
+                    Insane Gameplay
+                </h3>
 
             </div>
+
+
+            <div class="mini-feature">
+
+                <small>
+                    SHORT
+                </small>
+
+                <h3>
+                    Epic Short Video
+                </h3>
+
+            </div>
+
 
         </div>
 
@@ -585,13 +650,15 @@ footer p{
 </section>
 
 
-<!-- VIDEO -->
+<!-- ================= VIDEO ================= -->
 
 <section>
 
     <div class="section-header">
 
-        <h2>🎬 Video Gaming</h2>
+        <h2>
+            🎬 Video Gaming
+        </h2>
 
         <a href="#">
             Lihat Semua →
@@ -602,6 +669,7 @@ footer p{
 
     <div class="cards">
 
+
         <div class="card">
 
             <div class="card-image">
@@ -610,7 +678,9 @@ footer p{
 
             <div class="card-content">
 
-                <h3>Epic Gameplay</h3>
+                <h3>
+                    Epic Gameplay
+                </h3>
 
                 <p>
                     Highlight gameplay pilihan.
@@ -629,7 +699,9 @@ footer p{
 
             <div class="card-content">
 
-                <h3>Best Moment</h3>
+                <h3>
+                    Best Moment
+                </h3>
 
                 <p>
                     Momen terbaik dalam game.
@@ -648,7 +720,9 @@ footer p{
 
             <div class="card-content">
 
-                <h3>Gaming Shorts</h3>
+                <h3>
+                    Gaming Shorts
+                </h3>
 
                 <p>
                     Video pendek pilihan.
@@ -658,18 +732,21 @@ footer p{
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- WALLPAPER -->
+<!-- ================= WALLPAPER ================= -->
 
 <section id="wallpaper">
 
     <div class="section-header">
 
-        <h2>🖼️ Wallpaper Terbaru</h2>
+        <h2>
+            🖼️ Wallpaper Terbaru
+        </h2>
 
         <a href="#">
             Lihat Semua →
@@ -680,6 +757,7 @@ footer p{
 
     <div class="cards">
 
+
         <div class="card">
 
             <div class="card-image">
@@ -688,7 +766,9 @@ footer p{
 
             <div class="card-content">
 
-                <h3>Gaming Wallpaper</h3>
+                <h3>
+                    Gaming Wallpaper
+                </h3>
 
                 <p>
                     Wallpaper gaming untuk PC dan HP.
@@ -707,7 +787,9 @@ footer p{
 
             <div class="card-content">
 
-                <h3>Dark Gaming</h3>
+                <h3>
+                    Dark Gaming
+                </h3>
 
                 <p>
                     Koleksi wallpaper HD.
@@ -726,7 +808,9 @@ footer p{
 
             <div class="card-content">
 
-                <h3>Game Collection</h3>
+                <h3>
+                    Game Collection
+                </h3>
 
                 <p>
                     Wallpaper game pilihan.
@@ -736,18 +820,21 @@ footer p{
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- GAMES -->
+<!-- ================= GAMES ================= -->
 
 <section id="games">
 
     <div class="section-header">
 
-        <h2>🎮 Popular Games</h2>
+        <h2>
+            🎮 Popular Games
+        </h2>
 
         <a href="#">
             Semua Game →
@@ -758,15 +845,20 @@ footer p{
 
     <div class="games">
 
+
         <div class="game">
 
             <div class="game-icon">
                 GAME
             </div>
 
-            <h3>Game 01</h3>
+            <h3>
+                Game 01
+            </h3>
 
-            <p>Action</p>
+            <p>
+                Action
+            </p>
 
         </div>
 
@@ -777,22 +869,13 @@ footer p{
                 GAME
             </div>
 
-            <h3>Game 02</h3>
+            <h3>
+                Game 02
+            </h3>
 
-            <p>FPS</p>
-
-        </div>
-
-
-        <div class="game">
-
-            <div class="game-icon">
-                GAME
-            </div>
-
-            <h3>Game 03</h3>
-
-            <p>Adventure</p>
+            <p>
+                FPS
+            </p>
 
         </div>
 
@@ -803,11 +886,33 @@ footer p{
                 GAME
             </div>
 
-            <h3>Game 04</h3>
+            <h3>
+                Game 03
+            </h3>
 
-            <p>RPG</p>
+            <p>
+                Adventure
+            </p>
 
         </div>
+
+
+        <div class="game">
+
+            <div class="game-icon">
+                GAME
+            </div>
+
+            <h3>
+                Game 04
+            </h3>
+
+            <p>
+                RPG
+            </p>
+
+        </div>
+
 
     </div>
 
@@ -817,7 +922,7 @@ footer p{
 </div>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -836,6 +941,7 @@ footer p{
     </p>
 
 </footer>
+
 
 </body>
 </html>
