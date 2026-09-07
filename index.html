@@ -1,231 +1,840 @@
-index.html
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LesuikGame</title>
+<title>LesuikGame - Gaming Portal</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #0f1117;
-            color: white;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        header {
-            background: #171a23;
-            padding: 18px 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #292d38;
-        }
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#080a0f;
+    color:#fff;
+}
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-        }
+/* HEADER */
 
-        nav a {
-            color: #ccc;
-            text-decoration: none;
-            margin-left: 25px;
-        }
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:70px;
+    padding:0 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(10,12,18,.95);
+    border-bottom:1px solid #202532;
+    backdrop-filter:blur(10px);
+}
 
-        nav a:hover {
-            color: white;
-        }
+.logo{
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
+}
 
-        .hero {
-            padding: 70px 6%;
-            text-align: center;
-            background: linear-gradient(135deg, #171a23, #242938);
-        }
+.logo span{
+    color:#ff3d71;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
+nav{
+    display:flex;
+    gap:28px;
+}
 
-        .hero p {
-            color: #bbb;
-            font-size: 18px;
-        }
+nav a{
+    color:#b8bdc9;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    transition:.2s;
+}
 
-        .container {
-            width: 88%;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
+nav a:hover{
+    color:#fff;
+}
 
-        .section-title {
-            font-size: 25px;
-            margin-bottom: 20px;
-        }
+.search{
+    width:180px;
+    padding:10px 14px;
+    border-radius:20px;
+    border:1px solid #303542;
+    background:#141821;
+    color:#fff;
+    outline:none;
+}
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
+/* HERO */
 
-        .card {
-            background: #191c25;
-            border: 1px solid #292d38;
-            border-radius: 12px;
-            overflow: hidden;
-        }
+.hero{
+    min-height:430px;
+    padding:80px 7%;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 30%,rgba(255,61,113,.25),transparent 35%),
+        radial-gradient(circle at 20% 70%,rgba(91,80,255,.20),transparent 35%),
+        linear-gradient(135deg,#111522,#080a0f);
+}
 
-        .image {
-            height: 150px;
-            background: #292d38;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
+.hero-content{
+    max-width:700px;
+    position:relative;
+    z-index:2;
+}
 
-        .card-content {
-            padding: 16px;
-        }
+.badge{
+    display:inline-block;
+    padding:8px 14px;
+    margin-bottom:20px;
+    border-radius:20px;
+    background:#ff3d7118;
+    border:1px solid #ff3d7155;
+    color:#ff6d93;
+    font-size:12px;
+    font-weight:bold;
+}
 
-        .card h3 {
-            margin-bottom: 8px;
-        }
+.hero h1{
+    font-size:56px;
+    line-height:1.05;
+    margin-bottom:20px;
+}
 
-        .card p {
-            color: #999;
-            font-size: 14px;
-        }
+.hero h1 span{
+    color:#ff3d71;
+}
 
-        .ad {
-            margin: 40px 0;
-            height: 100px;
-            border: 1px dashed #555;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #777;
-        }
+.hero p{
+    max-width:580px;
+    color:#a9afbd;
+    font-size:17px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
 
-        footer {
-            margin-top: 60px;
-            padding: 30px;
-            text-align: center;
-            background: #171a23;
-            color: #777;
-        }
+.hero-buttons{
+    display:flex;
+    gap:12px;
+}
 
-        @media (max-width: 700px) {
-            nav {
-                display: none;
-            }
+.btn{
+    display:inline-block;
+    padding:13px 22px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
+}
 
-            .hero h1 {
-                font-size: 35px;
-            }
-        }
-    </style>
+.btn-primary{
+    background:#ff3d71;
+    color:#fff;
+}
+
+.btn-secondary{
+    background:#1b202b;
+    color:#ddd;
+    border:1px solid #303542;
+}
+
+/* CONTAINER */
+
+.container{
+    width:90%;
+    max-width:1250px;
+    margin:auto;
+}
+
+section{
+    padding-top:55px;
+}
+
+.section-header{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    margin-bottom:22px;
+}
+
+.section-header h2{
+    font-size:25px;
+}
+
+.section-header a{
+    color:#ff547f;
+    text-decoration:none;
+    font-size:13px;
+}
+
+/* AD */
+
+.ad{
+    margin:35px 0 10px;
+    height:90px;
+    border:1px dashed #343945;
+    background:#0d1016;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#555c69;
+    font-size:12px;
+}
+
+/* FEATURE */
+
+.feature{
+    display:grid;
+    grid-template-columns:1.7fr 1fr;
+    gap:20px;
+}
+
+.feature-main{
+    min-height:300px;
+    border-radius:14px;
+    overflow:hidden;
+    position:relative;
+    background:
+        linear-gradient(to top,rgba(0,0,0,.9),transparent 70%),
+        linear-gradient(135deg,#342047,#101827);
+    border:1px solid #272d39;
+}
+
+.feature-info{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+}
+
+.feature-info small{
+    color:#ff668c;
+    font-weight:bold;
+}
+
+.feature-info h3{
+    font-size:30px;
+    margin:8px 0;
+}
+
+.feature-info p{
+    color:#b0b5c0;
+}
+
+.feature-side{
+    display:grid;
+    gap:20px;
+}
+
+.mini-feature{
+    min-height:140px;
+    border-radius:14px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    justify-content:end;
+    background:linear-gradient(135deg,#19202e,#10131a);
+    border:1px solid #272d39;
+}
+
+.mini-feature h3{
+    margin-top:7px;
+}
+
+.mini-feature small{
+    color:#ff668c;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:#11151d;
+    border:1px solid #252b36;
+    border-radius:12px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#ff3d71;
+}
+
+.card-image{
+    height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle,#303748,#171b25);
+    color:#626a78;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.card-content{
+    padding:17px;
+}
+
+.card-content h3{
+    font-size:17px;
+    margin-bottom:8px;
+}
+
+.card-content p{
+    color:#8f96a5;
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* GAMES */
+
+.games{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.game{
+    padding:20px;
+    border-radius:12px;
+    background:#11151d;
+    border:1px solid #252b36;
+    text-align:center;
+    transition:.2s;
+}
+
+.game:hover{
+    border-color:#ff3d71;
+}
+
+.game-icon{
+    width:65px;
+    height:65px;
+    margin:auto auto 12px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#252b37;
+    color:#777f8d;
+}
+
+.game h3{
+    font-size:15px;
+}
+
+.game p{
+    color:#777f8d;
+    font-size:12px;
+    margin-top:6px;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:70px;
+    padding:40px 5%;
+    background:#0d1016;
+    border-top:1px solid #202532;
+    text-align:center;
+}
+
+.footer-logo{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+footer p{
+    color:#6f7684;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    header{
+        height:auto;
+        min-height:65px;
+        padding:15px 5%;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .search{
+        width:130px;
+    }
+
+    .hero{
+        min-height:390px;
+        padding:60px 7%;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .feature{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .games{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+
+    .logo{
+        font-size:19px;
+    }
+
+    .search{
+        width:110px;
+        padding:8px 10px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .games{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .feature-main{
+        min-height:260px;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-    <div class="logo">LesuikGame</div>
+
+    <div class="logo">
+        LESUIK<span>GAME</span>
+    </div>
 
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Game</a>
-        <a href="#">Wallpaper</a>
-        <a href="#">Highlight</a>
+        <a href="#">HOME</a>
+        <a href="#games">GAME</a>
+        <a href="#highlight">HIGHLIGHT</a>
+        <a href="#wallpaper">WALLPAPER</a>
     </nav>
+
+    <input
+        class="search"
+        type="text"
+        placeholder="🔍 Cari..."
+    >
+
 </header>
 
+
+<!-- HERO -->
+
 <section class="hero">
-    <h1>LesuikGame</h1>
-    <p>Game, wallpaper, highlight dan video pendek.</p>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            GAMING COMMUNITY
+        </div>
+
+        <h1>
+            ENTER THE<br>
+            <span>GAME WORLD.</span>
+        </h1>
+
+        <p>
+            Temukan highlight game, video pendek,
+            wallpaper, game terbaru dan berbagai
+            konten gaming menarik di LesuikGame.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#highlight" class="btn btn-primary">
+                Lihat Highlight
+            </a>
+
+            <a href="#wallpaper" class="btn btn-secondary">
+                Explore Wallpaper
+            </a>
+
+        </div>
+
+    </div>
+
 </section>
+
 
 <div class="container">
 
-    <div class="ad">
-        SLOT IKLAN
+
+<!-- IKLAN -->
+
+<div class="ad">
+    SLOT IKLAN
+</div>
+
+
+<!-- FEATURED -->
+
+<section id="highlight">
+
+    <div class="section-header">
+
+        <h2>🔥 Highlight Terbaru</h2>
+
+        <a href="#">
+            Lihat Semua →
+        </a>
+
     </div>
 
-    <h2 class="section-title">🔥 Highlight Terbaru</h2>
+
+    <div class="feature">
+
+        <div class="feature-main">
+
+            <div class="feature-info">
+
+                <small>FEATURED HIGHLIGHT</small>
+
+                <h3>Epic Gaming Moment</h3>
+
+                <p>
+                    Momen terbaik dari dunia gaming.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="feature-side">
+
+            <div class="mini-feature">
+
+                <small>VIDEO</small>
+
+                <h3>Insane Gameplay</h3>
+
+            </div>
+
+            <div class="mini-feature">
+
+                <small>SHORT</small>
+
+                <h3>Epic Short Video</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VIDEO -->
+
+<section>
+
+    <div class="section-header">
+
+        <h2>🎬 Video Gaming</h2>
+
+        <a href="#">
+            Lihat Semua →
+        </a>
+
+    </div>
+
 
     <div class="cards">
 
         <div class="card">
-            <div class="image">VIDEO</div>
-            <div class="card-content">
-                <h3>Highlight Gaming</h3>
-                <p>Video highlight terbaru.</p>
+
+            <div class="card-image">
+                VIDEO
             </div>
+
+            <div class="card-content">
+
+                <h3>Epic Gameplay</h3>
+
+                <p>
+                    Highlight gameplay pilihan.
+                </p>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <div class="image">VIDEO</div>
-            <div class="card-content">
-                <h3>Epic Moment</h3>
-                <p>Momen terbaik dalam game.</p>
-            </div>
-        </div>
 
         <div class="card">
-            <div class="image">VIDEO</div>
-            <div class="card-content">
-                <h3>Short Gaming</h3>
-                <p>Video pendek pilihan.</p>
+
+            <div class="card-image">
+                VIDEO
             </div>
+
+            <div class="card-content">
+
+                <h3>Best Moment</h3>
+
+                <p>
+                    Momen terbaik dalam game.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                VIDEO
+            </div>
+
+            <div class="card-content">
+
+                <h3>Gaming Shorts</h3>
+
+                <p>
+                    Video pendek pilihan.
+                </p>
+
+            </div>
+
         </div>
 
     </div>
 
-    <br><br>
+</section>
 
-    <h2 class="section-title">🖼️ Wallpaper Terbaru</h2>
+
+<!-- WALLPAPER -->
+
+<section id="wallpaper">
+
+    <div class="section-header">
+
+        <h2>🖼️ Wallpaper Terbaru</h2>
+
+        <a href="#">
+            Lihat Semua →
+        </a>
+
+    </div>
+
 
     <div class="cards">
 
         <div class="card">
-            <div class="image">WALLPAPER</div>
+
+            <div class="card-image">
+                WALLPAPER
+            </div>
+
             <div class="card-content">
+
                 <h3>Gaming Wallpaper</h3>
-                <p>Wallpaper untuk PC dan HP.</p>
+
+                <p>
+                    Wallpaper gaming untuk PC dan HP.
+                </p>
+
             </div>
+
         </div>
 
-        <div class="card">
-            <div class="image">WALLPAPER</div>
-            <div class="card-content">
-                <h3>Game Wallpaper</h3>
-                <p>Koleksi wallpaper gaming.</p>
-            </div>
-        </div>
 
         <div class="card">
-            <div class="image">WALLPAPER</div>
-            <div class="card-content">
-                <h3>HD Wallpaper</h3>
-                <p>Wallpaper berkualitas tinggi.</p>
+
+            <div class="card-image">
+                WALLPAPER
             </div>
+
+            <div class="card-content">
+
+                <h3>Dark Gaming</h3>
+
+                <p>
+                    Koleksi wallpaper HD.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                WALLPAPER
+            </div>
+
+            <div class="card-content">
+
+                <h3>Game Collection</h3>
+
+                <p>
+                    Wallpaper game pilihan.
+                </p>
+
+            </div>
+
         </div>
 
     </div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section id="games">
+
+    <div class="section-header">
+
+        <h2>🎮 Popular Games</h2>
+
+        <a href="#">
+            Semua Game →
+        </a>
+
+    </div>
+
+
+    <div class="games">
+
+        <div class="game">
+
+            <div class="game-icon">
+                GAME
+            </div>
+
+            <h3>Game 01</h3>
+
+            <p>Action</p>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-icon">
+                GAME
+            </div>
+
+            <h3>Game 02</h3>
+
+            <p>FPS</p>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-icon">
+                GAME
+            </div>
+
+            <h3>Game 03</h3>
+
+            <p>Adventure</p>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-icon">
+                GAME
+            </div>
+
+            <h3>Game 04</h3>
+
+            <p>RPG</p>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 </div>
 
+
+<!-- FOOTER -->
+
 <footer>
-    © 2026 LesuikGame
+
+    <div class="footer-logo">
+        LESUIKGAME
+    </div>
+
+    <p>
+        Gaming • Wallpaper • Highlight • Video
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 LesuikGame. All rights reserved.
+    </p>
+
 </footer>
 
 </body>
