@@ -7,6 +7,7 @@
 <title>LesuikGame - Gaming Portal</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -23,6 +24,7 @@ body{
     color:#fff;
 }
 
+
 /* ================= HEADER ================= */
 
 header{
@@ -34,6 +36,7 @@ header{
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     background:rgba(10,12,18,.95);
     border-bottom:1px solid #202532;
     backdrop-filter:blur(10px);
@@ -76,6 +79,7 @@ nav a:hover{
     outline:none;
 }
 
+
 /* ================= HERO ================= */
 
 .hero{
@@ -115,8 +119,10 @@ nav a:hover{
     padding:8px 14px;
     margin-bottom:20px;
     border-radius:20px;
+
     background:#ff3d7118;
     border:1px solid #ff3d7155;
+
     color:#ff6d93;
     font-size:12px;
     font-weight:bold;
@@ -149,6 +155,7 @@ nav a:hover{
     display:inline-block;
     padding:13px 22px;
     border-radius:8px;
+
     text-decoration:none;
     font-weight:bold;
     font-size:14px;
@@ -164,6 +171,7 @@ nav a:hover{
     color:#ddd;
     border:1px solid #303542;
 }
+
 
 /* ================= CONTAINER ================= */
 
@@ -194,19 +202,24 @@ section{
     font-size:13px;
 }
 
+
 /* ================= IKLAN ================= */
 
 .ad{
     margin:35px 0 10px;
     height:90px;
+
     border:1px dashed #343945;
     background:#0d1016;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     color:#555c69;
     font-size:12px;
 }
+
 
 /* ================= FEATURE ================= */
 
@@ -216,46 +229,41 @@ section{
     gap:20px;
 }
 
+
+/* ================= MPL HIGHLIGHT ================= */
+
 .feature-main{
     min-height:300px;
+
     border-radius:14px;
     overflow:hidden;
     position:relative;
 
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.9),
-            transparent 70%
-        ),
-        linear-gradient(
-            135deg,
-            #342047,
-            #101827
-        );
-
     border:1px solid #272d39;
+    background:#0d1016;
+
+    text-decoration:none;
+    display:block;
 }
 
-.feature-info{
-    position:absolute;
-    left:25px;
-    bottom:25px;
+.mpl-highlight img{
+    width:100%;
+    height:100%;
+    min-height:300px;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:transform .4s ease;
 }
 
-.feature-info small{
-    color:#ff668c;
-    font-weight:bold;
+.mpl-highlight:hover img{
+    transform:scale(1.03);
 }
 
-.feature-info h3{
-    font-size:30px;
-    margin:8px 0;
-}
 
-.feature-info p{
-    color:#b0b5c0;
-}
+/* ================= MINI FEATURE ================= */
 
 .feature-side{
     display:grid;
@@ -264,6 +272,7 @@ section{
 
 .mini-feature{
     min-height:140px;
+
     border-radius:14px;
     padding:22px;
 
@@ -279,6 +288,16 @@ section{
         );
 
     border:1px solid #272d39;
+
+    text-decoration:none;
+    color:#fff;
+
+    transition:.25s;
+}
+
+.mini-feature:hover{
+    border-color:#ff3d71;
+    transform:translateY(-3px);
 }
 
 .mini-feature h3{
@@ -287,7 +306,9 @@ section{
 
 .mini-feature small{
     color:#ff668c;
+    font-weight:bold;
 }
+
 
 /* ================= CARDS ================= */
 
@@ -300,8 +321,10 @@ section{
 .card{
     background:#11151d;
     border:1px solid #252b36;
+
     border-radius:12px;
     overflow:hidden;
+
     transition:.25s;
 }
 
@@ -325,6 +348,7 @@ section{
         );
 
     color:#626a78;
+
     font-size:12px;
     letter-spacing:2px;
 }
@@ -344,6 +368,7 @@ section{
     line-height:1.5;
 }
 
+
 /* ================= GAMES ================= */
 
 .games{
@@ -359,10 +384,14 @@ section{
 
 .game{
     padding:20px;
+
     border-radius:12px;
+
     background:#11151d;
     border:1px solid #252b36;
+
     text-align:center;
+
     transition:.2s;
 }
 
@@ -374,6 +403,7 @@ section{
 .game-icon{
     width:65px;
     height:65px;
+
     margin:auto auto 12px;
 
     border-radius:15px;
@@ -398,6 +428,7 @@ section{
         );
 
     color:#fff;
+
     border:1px solid #465d8a;
 }
 
@@ -411,13 +442,16 @@ section{
     margin-top:6px;
 }
 
+
 /* ================= FOOTER ================= */
 
 footer{
     margin-top:70px;
     padding:40px 5%;
+
     background:#0d1016;
     border-top:1px solid #202532;
+
     text-align:center;
 }
 
@@ -431,6 +465,7 @@ footer p{
     color:#6f7684;
     font-size:13px;
 }
+
 
 /* ================= MOBILE ================= */
 
@@ -470,7 +505,13 @@ footer p{
     .games{
         grid-template-columns:repeat(2,1fr);
     }
+
+    .mpl-highlight img{
+        min-height:auto;
+    }
+
 }
+
 
 @media(max-width:550px){
 
@@ -508,13 +549,17 @@ footer p{
     }
 
     .feature-main{
-        min-height:260px;
+        min-height:auto;
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -524,10 +569,14 @@ footer p{
         LESUIK<span>GAME</span>
     </div>
 
-    <nav>
-        <a href="#">HOME</a>
 
-        <a href="#games">
+    <nav>
+
+        <a href="#">
+            HOME
+        </a>
+
+        <a href="mobile-legends.html">
             GAME
         </a>
 
@@ -538,7 +587,9 @@ footer p{
         <a href="#wallpaper">
             WALLPAPER
         </a>
+
     </nav>
+
 
     <input
         class="search"
@@ -547,6 +598,7 @@ footer p{
     >
 
 </header>
+
 
 
 <!-- ================= HERO ================= -->
@@ -559,16 +611,19 @@ footer p{
             GAMING COMMUNITY
         </div>
 
+
         <h1>
             CENTER THE<br>
             <span>GAME WORLD.</span>
         </h1>
+
 
         <p>
             Temukan highlight game, video pendek,
             wallpaper, game terbaru dan berbagai
             konten gaming menarik di LesuikGame.
         </p>
+
 
         <div class="hero-buttons">
 
@@ -578,6 +633,7 @@ footer p{
             >
                 Lihat Highlight
             </a>
+
 
             <a
                 href="#wallpaper"
@@ -593,6 +649,7 @@ footer p{
 </section>
 
 
+
 <div class="container">
 
 
@@ -603,9 +660,11 @@ footer p{
 </div>
 
 
-<!-- ================= FEATURED ================= -->
+
+<!-- ================= HIGHLIGHT ================= -->
 
 <section id="highlight">
+
 
     <div class="section-header">
 
@@ -613,64 +672,68 @@ footer p{
             🔥 Highlight Terbaru
         </h2>
 
-        <a href="#">
+
+        <a href="mobile-legends.html">
             Lihat Semua →
         </a>
 
     </div>
 
 
+
     <div class="feature">
 
 
-        <div class="feature-main">
+        <!-- MPL S18 -->
 
-            <div class="feature-info">
+        <a
+            href="mobile-legends.html"
+            class="feature-main mpl-highlight"
+        >
 
-                <small>
-                    FEATURED HIGHLIGHT
-                </small>
+            <img
+                src="ChatGPT%20Image%20Sep%207,%202026,%2006_30_55%20PM.png"
+                alt="MPL Indonesia Season 18 - LesuikGame"
+            >
 
-                <h3>
-                    Epic Gaming Moment
-                </h3>
+        </a>
 
-                <p>
-                    Momen terbaik dari dunia gaming.
-                </p>
-
-            </div>
-
-        </div>
 
 
         <div class="feature-side">
 
 
-            <div class="mini-feature">
+            <a
+                href="mobile-legends.html"
+                class="mini-feature"
+            >
 
                 <small>
-                    VIDEO
+                    MOBILE LEGENDS
                 </small>
 
                 <h3>
-                    Insane Gameplay
+                    MPL Indonesia S18
                 </h3>
 
-            </div>
+            </a>
 
 
-            <div class="mini-feature">
+
+            <a
+                href="mobile-legends.html"
+                class="mini-feature"
+            >
 
                 <small>
-                    SHORT
+                    STATISTIK
                 </small>
 
                 <h3>
-                    Epic Short Video
+                    Klasemen & Performa Tim
                 </h3>
 
-            </div>
+            </a>
 
 
         </div>
@@ -680,9 +743,11 @@ footer p{
 </section>
 
 
+
 <!-- ================= VIDEO ================= -->
 
 <section>
+
 
     <div class="section-header">
 
@@ -690,11 +755,13 @@ footer p{
             🎬 Video Gaming
         </h2>
 
+
         <a href="#">
             Lihat Semua →
         </a>
 
     </div>
+
 
 
     <div class="cards">
@@ -705,6 +772,7 @@ footer p{
             <div class="card-image">
                 VIDEO
             </div>
+
 
             <div class="card-content">
 
@@ -721,11 +789,13 @@ footer p{
         </div>
 
 
+
         <div class="card">
 
             <div class="card-image">
                 VIDEO
             </div>
+
 
             <div class="card-content">
 
@@ -742,11 +812,13 @@ footer p{
         </div>
 
 
+
         <div class="card">
 
             <div class="card-image">
                 VIDEO
             </div>
+
 
             <div class="card-content">
 
@@ -768,9 +840,11 @@ footer p{
 </section>
 
 
+
 <!-- ================= WALLPAPER ================= -->
 
 <section id="wallpaper">
+
 
     <div class="section-header">
 
@@ -778,11 +852,13 @@ footer p{
             🖼️ Wallpaper Terbaru
         </h2>
 
+
         <a href="#">
             Lihat Semua →
         </a>
 
     </div>
+
 
 
     <div class="cards">
@@ -793,6 +869,7 @@ footer p{
             <div class="card-image">
                 WALLPAPER
             </div>
+
 
             <div class="card-content">
 
@@ -809,11 +886,13 @@ footer p{
         </div>
 
 
+
         <div class="card">
 
             <div class="card-image">
                 WALLPAPER
             </div>
+
 
             <div class="card-content">
 
@@ -830,11 +909,13 @@ footer p{
         </div>
 
 
+
         <div class="card">
 
             <div class="card-image">
                 WALLPAPER
             </div>
+
 
             <div class="card-content">
 
@@ -856,9 +937,11 @@ footer p{
 </section>
 
 
+
 <!-- ================= GAMES ================= -->
 
 <section id="games">
+
 
     <div class="section-header">
 
@@ -866,11 +949,13 @@ footer p{
             🎮 Popular Games
         </h2>
 
-        <a href="#">
+
+        <a href="mobile-legends.html">
             Semua Game →
         </a>
 
     </div>
+
 
 
     <div class="games">
@@ -886,7 +971,8 @@ footer p{
             <div class="game">
 
                 <div class="game-icon ml">
-                    MOBILE<br>LEGENDS
+                    MOBILE<br>
+                    LEGENDS
                 </div>
 
                 <h3>
@@ -900,6 +986,7 @@ footer p{
             </div>
 
         </a>
+
 
 
         <!-- GAME 02 -->
@@ -928,6 +1015,7 @@ footer p{
         </a>
 
 
+
         <!-- GAME 03 -->
 
         <a
@@ -952,6 +1040,7 @@ footer p{
             </div>
 
         </a>
+
 
 
         <!-- GAME 04 -->
@@ -988,23 +1077,29 @@ footer p{
 </div>
 
 
+
 <!-- ================= FOOTER ================= -->
 
 <footer>
+
 
     <div class="footer-logo">
         LESUIKGAME
     </div>
 
+
     <p>
         Gaming • Wallpaper • Highlight • Video
     </p>
 
+
     <br>
+
 
     <p>
         © 2026 LesuikGame. All rights reserved.
     </p>
+
 
 </footer>
 
