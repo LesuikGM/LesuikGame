@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Editor Artikel - LesuikGame</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0b0f;
+      color: #fff;
+    }
+
+    .header {
+      height: 70px;
+      background: #111118;
+      border-bottom: 1px solid #292933;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #ff315d;
+    }
+
+    .back {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 35px 25px 60px;
+    }
+
+    .title {
+      margin-bottom: 25px;
+    }
+
+    .title h1 {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .title p {
+      color: #888;
+    }
+
+    .editor-box {
+      background: #15151d;
+      border: 1px solid #292933;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 9px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #30303a;
+      background: #0e0e14;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 25px;
+    }
+
+    input[type="text"]:focus {
+      border-color: #ff315d;
+    }
+
+    .upload {
+      border: 1px dashed #444451;
+      border-radius: 8px;
+      padding: 25px;
+      text-align: center;
+      margin-bottom: 25px;
+      background: #0e0e14;
+    }
+
+    .upload p {
+      color: #777;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    input[type="file"] {
+      color: #bbb;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      padding: 10px;
+      background: #20202a;
+      border: 1px solid #30303a;
+      border-bottom: none;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .toolbar button {
+      min-width: 38px;
+      height: 35px;
+      border: none;
+      border-radius: 6px;
+      background: #2b2b36;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .toolbar button:hover {
+      background: #ff315d;
+    }
+
+    .editor {
+      min-height: 400px;
+      background: #fff;
+      color: #111;
+      padding: 20px;
+      border-radius: 0 0 8px 8px;
+      outline: none;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .editor:focus {
+      box-shadow: 0 0 0 2px #ff315d;
+    }
+
+    .editor:empty:before {
+      content: "Tulis artikel kamu di sini...";
+      color: #999;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      border: none;
+      padding: 13px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .save {
+      background: #292933;
+      color: #fff;
+    }
+
+    .publish {
+      background: #ff315d;
+      color: #fff;
+    }
+
+    .button:hover {
+      opacity: .85;
+    }
+
+    .preview {
+      background: #15151d;
+      border: 1px solid #292933;
+      border-radius: 12px;
+      padding: 25px;
+      margin-top: 25px;
+    }
+
+    .preview h2 {
+      margin-bottom: 20px;
+    }
+
+    #previewContent {
+      background: #fff;
+      color: #111;
+      padding: 25px;
+      border-radius: 8px;
+      min-height: 100px;
+      line-height: 1.7;
+    }
+
+    .message {
+      display: none;
+      padding: 13px;
+      border-radius: 8px;
+      margin-top: 15px;
+      background: #20202a;
+      color: #ccc;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        padding: 0 18px;
+      }
+
+      .container {
+        padding: 25px 15px 40px;
+      }
+
+      .editor-box {
+        padding: 18px;
+      }
+
+      .title h1 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+
+  <div class="logo">
+    LESUIK<span>GAME</span>
+  </div>
+
+  <a href="index.html" class="back">
+    ← Dashboard
+  </a>
+
+</header>
+
+
+<main class="container">
+
+  <div class="title">
+
+    <h1>📝 Buat Artikel</h1>
+
+    <p>
+      Tulis dan siapkan artikel untuk LesuikGame.
+    </p>
+
+  </div>
+
+
+  <div class="editor-box">
+
+    <label>Judul Artikel</label>
+
+    <input
+      type="text"
+      id="judul"
+      placeholder="Masukkan judul artikel..."
+    >
+
+
+    <label>Gambar Utama</label>
+
+    <div class="upload">
+
+      <input
+        type="file"
+        id="gambar"
+        accept="image/*"
+      >
+
+      <p>
+        Pilih gambar utama untuk artikel
+      </p>
+
+    </div>
+
+
+    <label>Isi Artikel</label>
+
+    <div class="toolbar">
+
+      <button onclick="format('bold')" title="Bold">
+        <b>B</b>
+      </button>
+
+      <button onclick="format('italic')" title="Italic">
+        <i>I</i>
+      </button>
+
+      <button onclick="format('underline')" title="Underline">
+        <u>U</u>
+      </button>
+
+      <button onclick="format('formatBlock','h2')">
+        H2
+      </button>
+
+      <button onclick="format('formatBlock','h3')">
+        H3
+      </button>
+
+      <button onclick="format('insertUnorderedList')">
+        • List
+      </button>
+
+      <button onclick="format('insertOrderedList')">
+        1. List
+      </button>
+
+      <button onclick="addLink()">
+        🔗 Link
+      </button>
+
+      <button onclick="format('justifyLeft')">
+        ≡
+      </button>
+
+      <button onclick="format('justifyCenter')">
+        ≡
+      </button>
+
+    </div>
+
+
+    <div
+      class="editor"
+      id="editor"
+      contenteditable="true"
+    ></div>
+
+
+    <div class="actions">
+
+      <button
+        class="button save"
+        onclick="simpanDraft()"
+      >
+        💾 Simpan Draft
+      </button>
+
+      <button
+        class="button publish"
+        onclick="publishArtikel()"
+      >
+        🚀 Publish
+      </button>
+
+    </div>
+
+    <div
+      class="message"
+      id="message"
+    ></div>
+
+  </div>
+
+
+  <div class="preview">
+
+    <h2>👁️ Preview Artikel</h2>
+
+    <div id="previewContent">
+      Preview artikel akan muncul di sini.
+    </div>
+
+  </div>
+
+</main>
+
+
+<script>
+
+  function format(command, value = null) {
+
+    document.execCommand(
+      command,
+      false,
+      value
+    );
+
+    document.getElementById("editor").focus();
+
+    updatePreview();
+  }
+
+
+  function addLink() {
+
+    const url = prompt(
+      "Masukkan alamat link:"
+    );
+
+    if (url) {
+
+      document.execCommand(
+        "createLink",
+        false,
+        url
+      );
+
+    }
+
+    document.getElementById("editor").focus();
+
+    updatePreview();
+  }
+
+
+  function updatePreview() {
+
+    const editor =
+      document.getElementById("editor");
+
+    const preview =
+      document.getElementById("previewContent");
+
+    if (editor.innerHTML.trim() === "") {
+
+      preview.innerHTML =
+        "Preview artikel akan muncul di sini.";
+
+      return;
+
+    }
+
+    preview.innerHTML =
+      editor.innerHTML;
+  }
+
+
+  document
+    .getElementById("editor")
+    .addEventListener(
+      "input",
+      updatePreview
+    );
+
+
+  function showMessage(text) {
+
+    const message =
+      document.getElementById("message");
+
+    message.innerText = text;
+
+    message.style.display = "block";
+
+  }
+
+
+  function simpanDraft() {
+
+    const data = {
+
+      judul:
+        document.getElementById("judul").value,
+
+      isi:
+        document.getElementById("editor").innerHTML
+
+    };
+
+    localStorage.setItem(
+      "lesuikgame_draft",
+      JSON.stringify(data)
+    );
+
+    showMessage(
+      "✅ Draft berhasil disimpan di browser."
+    );
+
+  }
+
+
+  function publishArtikel() {
+
+    const judul =
+      document.getElementById("judul").value.trim();
+
+    const isi =
+      document.getElementById("editor").innerHTML.trim();
+
+
+    if (!judul) {
+
+      alert(
+        "Silakan masukkan judul artikel."
+      );
+
+      return;
+
+    }
+
+
+    if (!isi) {
+
+      alert(
+        "Silakan tulis isi artikel."
+      );
+
+      return;
+
+    }
+
+
+    showMessage(
+      "🚀 Artikel siap dipublish. Sistem publish GitHub akan kita sambungkan pada langkah berikutnya."
+    );
+
+  }
+
+
+  window.onload = function() {
+
+    const saved =
+      localStorage.getItem(
+        "lesuikgame_draft"
+      );
+
+    if (saved) {
+
+      const data =
+        JSON.parse(saved);
+
+      document.getElementById(
+        "judul"
+      ).value = data.judul || "";
+
+      document.getElementById(
+        "editor"
+      ).innerHTML = data.isi || "";
+
+      updatePreview();
+
+    }
+
+  };
+
+</script>
+
+</body>
+</html>
