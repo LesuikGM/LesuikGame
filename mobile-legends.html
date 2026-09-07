@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mobile Legends - LesuikGame</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#09090d;
+    color:#fff;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* HEADER */
+header{
+    width:100%;
+    padding:20px 6%;
+    background:#0d0d13;
+    border-bottom:1px solid #22222c;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo span{
+    color:#ff174f;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+}
+
+nav a{
+    color:#aaa;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#ff174f;
+}
+
+/* HERO */
+.hero{
+    min-height:420px;
+    padding:70px 6%;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at 80% 50%, rgba(255,23,79,.18), transparent 35%),
+    linear-gradient(120deg,#0b0b10,#11111a);
+}
+
+.hero-content{
+    max-width:700px;
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid #ff174f;
+    color:#ff174f;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:55px;
+    line-height:1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#ff174f;
+}
+
+.hero p{
+    color:#aaa;
+    font-size:17px;
+    line-height:1.7;
+    max-width:620px;
+}
+
+.hero-decoration{
+    position:absolute;
+    right:5%;
+    width:330px;
+    height:330px;
+    border-radius:50%;
+    border:1px solid rgba(255,23,79,.3);
+    box-shadow:
+        0 0 80px rgba(255,23,79,.15),
+        inset 0 0 80px rgba(255,23,79,.08);
+}
+
+/* CONTENT */
+.container{
+    width:88%;
+    max-width:1300px;
+    margin:auto;
+    padding:60px 0;
+}
+
+.section-title{
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+/* CATEGORY */
+.categories{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:15px;
+    margin-bottom:70px;
+}
+
+.category{
+    background:#121219;
+    border:1px solid #24242e;
+    padding:25px 15px;
+    text-align:center;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.category:hover{
+    transform:translateY(-5px);
+    border-color:#ff174f;
+}
+
+.category .icon{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.category h3{
+    font-size:15px;
+}
+
+/* HERO CARDS */
+.hero-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.hero-card{
+    background:#121219;
+    border:1px solid #24242e;
+    border-radius:14px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.hero-card:hover{
+    transform:translateY(-6px);
+    border-color:#ff174f;
+}
+
+.hero-image{
+    height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    background:
+    linear-gradient(135deg,#181820,#252531);
+}
+
+.hero-info{
+    padding:18px;
+}
+
+.hero-info h3{
+    font-size:19px;
+    margin-bottom:7px;
+}
+
+.hero-info p{
+    color:#888;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.role{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:5px;
+    background:#20121a;
+    color:#ff5075;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* UPDATE */
+.updates{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.update-card{
+    background:#121219;
+    border:1px solid #24242e;
+    padding:25px;
+    border-radius:14px;
+}
+
+.update-card .date{
+    color:#ff174f;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.update-card h3{
+    margin-bottom:10px;
+}
+
+.update-card p{
+    color:#888;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* AD */
+.ad{
+    margin:60px 0;
+    height:120px;
+    border:1px dashed #33333d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#555;
+    letter-spacing:2px;
+    font-size:13px;
+}
+
+/* FOOTER */
+footer{
+    border-top:1px solid #22222c;
+    padding:30px 6%;
+    text-align:center;
+    color:#555;
+    font-size:13px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    nav{
+        gap:12px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero-decoration{
+        opacity:.3;
+        right:-100px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .hero-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .updates{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    nav{
+        width:100%;
+        justify-content:space-between;
+        gap:10px;
+    }
+
+    .hero{
+        min-height:380px;
+        padding:50px 6%;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        width:92%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <a href="index.html" class="logo">
+        LESUIK<span>GAME</span>
+    </a>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="#hero">HERO</a>
+        <a href="#item">ITEM</a>
+        <a href="#build">BUILD</a>
+        <a href="#update">UPDATE</a>
+    </nav>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            MOBILE LEGENDS
+        </div>
+
+        <h1>
+            MOBILE<br>
+            <span>LEGENDS</span>
+        </h1>
+
+        <p>
+            Temukan informasi Mobile Legends di LesuikGame.
+            Jelajahi hero, role, item, build, update dan berbagai
+            informasi menarik lainnya.
+        </p>
+
+    </div>
+
+    <div class="hero-decoration"></div>
+
+</section>
+
+
+<main class="container">
+
+
+    <!-- CATEGORY -->
+    <div class="section-title">
+        <h2>Mobile Legends</h2>
+        <p>Pilih informasi yang ingin kamu jelajahi.</p>
+    </div>
+
+    <div class="categories">
+
+        <a href="#hero" class="category">
+            <div class="icon">🦸</div>
+            <h3>HERO</h3>
+        </a>
+
+        <a href="#item" class="category">
+            <div class="icon">⚔️</div>
+            <h3>ITEM</h3>
+        </a>
+
+        <a href="#build" class="category">
+            <div class="icon">🔥</div>
+            <h3>BUILD</h3>
+        </a>
+
+        <a href="#update" class="category">
+            <div class="icon">📰</div>
+            <h3>UPDATE</h3>
+        </a>
+
+        <a href="#tier" class="category">
+            <div class="icon">📊</div>
+            <h3>TIER LIST</h3>
+        </a>
+
+    </div>
+
+
+    <!-- HERO -->
+    <section id="hero">
+
+        <div class="section-title">
+            <h2>Hero Mobile Legends</h2>
+            <p>Informasi hero berdasarkan role.</p>
+        </div>
+
+        <div class="hero-grid">
+
+            <div class="hero-card">
+                <div class="hero-image">⚔️</div>
+
+                <div class="hero-info">
+                    <h3>Fighter</h3>
+                    <p>Hero dengan kemampuan bertarung jarak dekat.</p>
+                    <span class="role">FIGHTER</span>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-image">🛡️</div>
+
+                <div class="hero-info">
+                    <h3>Tank</h3>
+                    <p>Hero dengan pertahanan tinggi untuk melindungi tim.</p>
+                    <span class="role">TANK</span>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-image">🏹</div>
+
+                <div class="hero-info">
+                    <h3>Marksman</h3>
+                    <p>Hero dengan serangan jarak jauh dan damage tinggi.</p>
+                    <span class="role">MARKSMAN</span>
+                </div>
+            </div>
+
+
+            <div class="hero-card">
+                <div class="hero-image">✨</div>
+
+                <div class="hero-info">
+                    <h3>Mage</h3>
+                    <p>Hero dengan kemampuan magic damage yang kuat.</p>
+                    <span class="role">MAGE</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- IKLAN -->
+    <div class="ad">
+        SLOT IKLAN
+    </div>
+
+
+    <!-- ITEM -->
+    <section id="item">
+
+        <div class="section-title">
+            <h2>Item</h2>
+            <p>Informasi item dan fungsi penggunaannya.</p>
+        </div>
+
+        <div class="hero-grid">
+
+            <div class="hero-card">
+                <div class="hero-image">⚔️</div>
+
+                <div class="hero-info">
+                    <h3>Physical Item</h3>
+                    <p>Item untuk meningkatkan physical attack.</p>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-image">🔮</div>
+
+                <div class="hero-info">
+                    <h3>Magic Item</h3>
+                    <p>Item untuk meningkatkan magic power.</p>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-image">🛡️</div>
+
+                <div class="hero-info">
+                    <h3>Defense Item</h3>
+                    <p>Item untuk meningkatkan kemampuan bertahan.</p>
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <div class="hero-image">👟</div>
+
+                <div class="hero-info">
+                    <h3>Boots</h3>
+                    <p>Item sepatu untuk meningkatkan movement dan atribut tertentu.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="ad">
+        SLOT IKLAN
+    </div>
+
+
+    <!-- BUILD -->
+    <section id="build">
+
+        <div class="section-title">
+            <h2>Build</h2>
+            <p>Build hero untuk berbagai gaya permainan.</p>
+        </div>
+
+        <div class="updates">
+
+            <div class="update-card">
+                <div class="date">BUILD 01</div>
+                <h3>Build Damage</h3>
+                <p>
+                    Rekomendasi susunan item untuk meningkatkan
+                    damage hero.
+                </p>
+            </div>
+
+            <div class="update-card">
+                <div class="date">BUILD 02</div>
+                <h3>Build Defense</h3>
+                <p>
+                    Susunan item untuk meningkatkan daya tahan
+                    hero dalam pertandingan.
+                </p>
+            </div>
+
+            <div class="update-card">
+                <div class="date">BUILD 03</div>
+                <h3>Build Hybrid</h3>
+                <p>
+                    Kombinasi damage dan defense untuk gaya bermain
+                    yang lebih fleksibel.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="ad">
+        SLOT IKLAN
+    </div>
+
+
+    <!-- UPDATE -->
+    <section id="update">
+
+        <div class="section-title">
+            <h2>Mobile Legends Update</h2>
+            <p>Berita dan informasi terbaru Mobile Legends.</p>
+        </div>
+
+        <div class="updates">
+
+            <div class="update-card">
+                <div class="date">UPDATE</div>
+                <h3>Patch & Balance</h3>
+                <p>
+                    Informasi perubahan kemampuan hero,
+                    item dan gameplay.
+                </p>
+            </div>
+
+            <div class="update-card">
+                <div class="date">NEWS</div>
+                <h3>Event Mobile Legends</h3>
+                <p>
+                    Informasi event dan aktivitas menarik
+                    yang tersedia di dalam game.
+                </p>
+            </div>
+
+            <div class="update-card">
+                <div class="date">INFO</div>
+                <h3>Tips & Strategi</h3>
+                <p>
+                    Tips bermain dan strategi untuk membantu
+                    meningkatkan permainan.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TIER LIST -->
+    <section id="tier" style="margin-top:70px;">
+
+        <div class="section-title">
+            <h2>Tier List</h2>
+            <p>Daftar hero berdasarkan performa dan role.</p>
+        </div>
+
+        <div class="updates">
+
+            <div class="update-card">
+                <div class="date">S TIER</div>
+                <h3>Hero Teratas</h3>
+                <p>
+                    Hero yang dianggap sangat kuat dan memiliki
+                    performa tinggi.
+                </p>
+            </div>
+
+            <div class="update-card">
+                <div class="date">A TIER</div>
+                <h3>Hero Kuat</h3>
+                <p>
+                    Hero yang sangat layak digunakan dalam
+                    berbagai kondisi pertandingan.
+                </p>
+            </div>
+
+            <div class="update-card">
+                <div class="date">B TIER</div>
+                <h3>Hero Situasional</h3>
+                <p>
+                    Hero yang dapat digunakan dengan strategi
+                    dan kondisi tertentu.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    © 2026 LesuikGame — Gaming Portal
+</footer>
+
+</body>
+</html>
