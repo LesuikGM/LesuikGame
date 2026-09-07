@@ -1,3 +1,215 @@
+lalu apa yang saya pilih
+bukan center kok enter
+ada 153 data bermasalah
+menghapusnya dibagian mana
+apa ini
+mana index yang baru
+saya ingin bagian video ini di taruh di bawah, ganti dengan gambar News
+buatkan saya mobile legend html dan index yang baru
+saya ingin highligh terbaru, itu dashbord MPL s19
+ini fotonya
+Edit
+Edit
+Edit
+bagaimana cara membuatnya
+aku ingin menunya seperti ms word
+belum berubah sedikitpun
+
+Benar — dari screenshot kamu memang belum berubah. Dan saya sudah cek repository GitHub-nya: kode baru sebenarnya sudah tersimpan di admin/artikel.html dan ukurannya sekarang 1.142 baris.
+
+Jadi masalahnya bukan kode yang gagal disimpan. Masalahnya kemungkinan GitHub Pages masih menyajikan versi lama.
+
+Kita jangan utak-atik kodenya lagi. Kita cek dulu Pages-nya.
+
+Coba ini dulu
+
+Di alamat halaman editor yang sekarang, tambahkan:
+
+?v=2
+
+Jadi alamatnya:
+
+https://lesuikgm.github.io/LesuikGame/admin/artikel.html?v=2
+
+Lalu tekan Enter.
+
+Kalau masih tampilan lama, lakukan:
+
+Ctrl + Shift + R
+
+Kalau masih lama
+
+Jangan lakukan perubahan apa pun di file.
+
+Kirim screenshot setelah membuka alamat ?v=2 tadi.
+
+Kalau tetap lama, saya akan tuntun kamu mengecek Settings → Pages untuk memastikan GitHub Pages benar-benar mengambil branch main. Kita selesaikan ini dulu sebelum menambah fitur lain.
+
+saya ingin lesuikgame saat di klik akan timbul pilihan ingin kembali ke home atau tidak
+
+Bisa. Jadi saat LESUIKGAME di bagian kiri atas diklik, muncul pertanyaan:
+
+Kembali ke Home?
+Anda yakin ingin kembali ke halaman utama?
+Batal | Ya, Kembali
+
+Kalau pilih Ya, Kembali → masuk ke index.html.
+Kalau Batal → tetap di editor.
+
+Kita ubah di admin/artikel.html.
+
+1. Cari bagian logo
+
+Di kode artikel.html, cari:
+
+<div class="logo">LESUIK<span>GAME</span></div>
+
+Ganti menjadi:
+
+<div class="logo" onclick="confirmHome()">LESUIK<span>GAME</span></div>
+2. Tambahkan kode ini sebelum </body>
+<!-- MODAL KEMBALI KE HOME -->
+<div id="homeModal" class="home-modal">
+  <div class="home-modal-box">
+    <div class="home-modal-icon">🏠</div>
+
+    <h2>Kembali ke Home?</h2>
+
+    <p>
+      Anda yakin ingin kembali ke halaman utama?
+    </p>
+
+    <div class="home-modal-buttons">
+      <button class="btn-cancel" onclick="closeHomeModal()">
+        Batal
+      </button>
+
+      <button class="btn-home" onclick="goHome()">
+        Ya, Kembali
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+.home-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 99999;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-modal-box {
+  width: 380px;
+  max-width: calc(100% - 40px);
+  background: white;
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  animation: homePopup .2s ease;
+}
+
+.home-modal-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.home-modal-box h2 {
+  margin: 5px 0 10px;
+  color: #222;
+  font-size: 22px;
+}
+
+.home-modal-box p {
+  margin: 0 0 25px;
+  color: #777;
+  font-size: 14px;
+}
+
+.home-modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.home-modal-buttons button {
+  border: none;
+  padding: 11px 22px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-cancel {
+  background: #eee;
+  color: #333;
+}
+
+.btn-home {
+  background: #ff1744;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background: #ddd;
+}
+
+.btn-home:hover {
+  background: #d91038;
+}
+
+@keyframes homePopup {
+  from {
+    opacity: 0;
+    transform: scale(.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>
+
+<script>
+function confirmHome() {
+  document.getElementById("homeModal").style.display = "flex";
+}
+
+function closeHomeModal() {
+  document.getElementById("homeModal").style.display = "none";
+}
+
+function goHome() {
+  window.location.href = "../index.html";
+}
+
+// Klik area gelap untuk menutup
+document.getElementById("homeModal").addEventListener("click", function(e) {
+  if (e.target === this) {
+    closeHomeModal();
+  }
+});
+</script>
+
+Hasilnya nanti seperti ini:
+
+Klik LESUIKGAME
+
+↓
+
+🪟 Kembali ke Home?
+
+Anda yakin ingin kembali ke halaman utama?
+
+Batal Ya, Kembali
+
+Ini hanya berlaku di halaman editor, jadi pengguna tidak langsung keluar dari editor ketika salah klik logo.
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -1088,7 +1300,7 @@ function previewArticle() {
       "_blank"
     );
 
-  win.document.write(`
+  win.document.write(
     <!DOCTYPE html>
     <html>
     <head>
@@ -1130,7 +1342,7 @@ function previewArticle() {
 
     </body>
     </html>
-  `);
+  );
 
   win.document.close();
 
@@ -1140,3 +1352,4 @@ function previewArticle() {
 
 </body>
 </html>
+
