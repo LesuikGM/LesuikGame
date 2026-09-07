@@ -352,6 +352,11 @@ section{
     gap:15px;
 }
 
+.game-link{
+    text-decoration:none;
+    color:inherit;
+}
+
 .game{
     padding:20px;
     border-radius:12px;
@@ -363,6 +368,7 @@ section{
 
 .game:hover{
     border-color:#ff3d71;
+    transform:translateY(-4px);
 }
 
 .game-icon{
@@ -378,6 +384,21 @@ section{
 
     background:#252b37;
     color:#777f8d;
+
+    font-size:11px;
+    font-weight:bold;
+}
+
+.game-icon.ml{
+    background:
+        linear-gradient(
+            135deg,
+            #1d3557,
+            #302b63
+        );
+
+    color:#fff;
+    border:1px solid #465d8a;
 }
 
 .game h3{
@@ -505,9 +526,18 @@ footer p{
 
     <nav>
         <a href="#">HOME</a>
-        <a href="#games">GAME</a>
-        <a href="#highlight">HIGHLIGHT</a>
-        <a href="#wallpaper">WALLPAPER</a>
+
+        <a href="#games">
+            GAME
+        </a>
+
+        <a href="#highlight">
+            HIGHLIGHT
+        </a>
+
+        <a href="#wallpaper">
+            WALLPAPER
+        </a>
     </nav>
 
     <input
@@ -846,72 +876,108 @@ footer p{
     <div class="games">
 
 
-        <div class="game">
+        <!-- MOBILE LEGENDS -->
 
-            <div class="game-icon">
-                GAME
+        <a
+            href="mobile-legends.html"
+            class="game-link"
+        >
+
+            <div class="game">
+
+                <div class="game-icon ml">
+                    MOBILE<br>LEGENDS
+                </div>
+
+                <h3>
+                    Mobile Legends
+                </h3>
+
+                <p>
+                    MOBA
+                </p>
+
             </div>
 
-            <h3>
-                Game 01
-            </h3>
-
-            <p>
-                Action
-            </p>
-
-        </div>
+        </a>
 
 
-        <div class="game">
+        <!-- GAME 02 -->
 
-            <div class="game-icon">
-                GAME
+        <a
+            href="#"
+            class="game-link"
+        >
+
+            <div class="game">
+
+                <div class="game-icon">
+                    GAME
+                </div>
+
+                <h3>
+                    Game 02
+                </h3>
+
+                <p>
+                    FPS
+                </p>
+
             </div>
 
-            <h3>
-                Game 02
-            </h3>
-
-            <p>
-                FPS
-            </p>
-
-        </div>
+        </a>
 
 
-        <div class="game">
+        <!-- GAME 03 -->
 
-            <div class="game-icon">
-                GAME
+        <a
+            href="#"
+            class="game-link"
+        >
+
+            <div class="game">
+
+                <div class="game-icon">
+                    GAME
+                </div>
+
+                <h3>
+                    Game 03
+                </h3>
+
+                <p>
+                    Adventure
+                </p>
+
             </div>
 
-            <h3>
-                Game 03
-            </h3>
-
-            <p>
-                Adventure
-            </p>
-
-        </div>
+        </a>
 
 
-        <div class="game">
+        <!-- GAME 04 -->
 
-            <div class="game-icon">
-                GAME
+        <a
+            href="#"
+            class="game-link"
+        >
+
+            <div class="game">
+
+                <div class="game-icon">
+                    GAME
+                </div>
+
+                <h3>
+                    Game 04
+                </h3>
+
+                <p>
+                    RPG
+                </p>
+
             </div>
 
-            <h3>
-                Game 04
-            </h3>
-
-            <p>
-                RPG
-            </p>
-
-        </div>
+        </a>
 
 
     </div>
