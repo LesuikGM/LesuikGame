@@ -3,1140 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Word Editor - LesuikGame</title>
+<title>LesuikGame Admin</title>
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#0b0b0f;
+  color:#fff;
+  min-height:100vh;
+}
+.header{
+  height:70px;
+  background:#111118;
+  border-bottom:1px solid #292933;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+}
+.logo{
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+.logo span{color:#ff315d}
+.back{
+  color:#aaa;
+  text-decoration:none;
+  font-size:14px;
+}
+.back:hover{color:#fff}
+
+.layout{
+  display:flex;
+  min-height:calc(100vh - 70px);
+}
+.sidebar{
+  width:240px;
+  flex-shrink:0;
+  background:#111118;
+  border-right:1px solid #292933;
+  padding:25px 15px;
+}
+.sidebar-title{
+  color:#666;
+  font-size:12px;
+  text-transform:uppercase;
+  margin:0 12px 15px;
+  letter-spacing:1px;
+}
+.menu{
+  display:block;
+  padding:13px 15px;
+  margin-bottom:5px;
+  border-radius:8px;
+  color:#bbb;
+  text-decoration:none;
+  font-size:15px;
+}
+.menu:hover,.menu.active{
+  background:#1e1e28;
+  color:#fff;
+}
+.menu.active{border-left:3px solid #ff315d}
+
+.content{
+  flex:1;
+  padding:35px;
+  max-width:1200px;
+}
+.welcome{margin-bottom:30px}
+.welcome h1{
+  font-size:30px;
+  margin-bottom:8px;
+}
+.welcome p{color:#888}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-bottom:35px;
+}
+.card{
+  background:#15151d;
+  border:1px solid #282832;
+  border-radius:12px;
+  padding:25px;
+}
+.card-icon{
+  font-size:30px;
+  margin-bottom:15px;
+}
+.card h3{margin-bottom:8px}
+.card p{
+  color:#777;
+  font-size:14px;
+  line-height:1.5;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f1f1f1;
-  color: #222;
+.quick{
+  background:#15151d;
+  border:1px solid #282832;
+  border-radius:12px;
+  padding:25px;
+}
+.quick h2{
+  margin-bottom:20px;
+  font-size:20px;
+}
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.button{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:8px;
+  text-decoration:none;
+  background:#ff315d;
+  color:#fff;
+  font-weight:bold;
+  font-size:14px;
+}
+.button:hover{opacity:.85}
+.button.secondary{
+  background:#24242e;
+  color:#ccc;
 }
 
-/* TOP BAR */
-.topbar {
-  height: 56px;
-  background: #111118;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+@media(max-width:800px){
+  .sidebar{width:190px}
+  .cards{grid-template-columns:1fr}
+  .content{padding:25px 20px}
 }
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.logo span {
-  color: #ff315d;
-}
-
-.back {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-/* FILE NAME */
-.filebar {
-  background: white;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  padding: 0 25px;
-  border-bottom: 1px solid #ddd;
-}
-
-.filebar input {
-  border: none;
-  outline: none;
-  font-size: 16px;
-  width: 350px;
-  padding: 7px;
-}
-
-.file-icon {
-  margin-right: 8px;
-}
-
-/* RIBBON TABS */
-.tabs {
-  background: #fff;
-  height: 43px;
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  border-bottom: 1px solid #ddd;
-}
-
-.tab {
-  padding: 12px 18px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.tab:hover {
-  background: #eee;
-}
-
-.tab.active {
-  color: #ff315d;
-  font-weight: bold;
-  border-bottom: 3px solid #ff315d;
-}
-
-/* RIBBON */
-.ribbon {
-  background: #fafafa;
-  border-bottom: 1px solid #ccc;
-  min-height: 82px;
-  padding: 8px 18px;
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-}
-
-.ribbon-group {
-  border-right: 1px solid #ddd;
-  padding-right: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: max-content;
-}
-
-.ribbon-buttons {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.group-title {
-  text-align: center;
-  font-size: 10px;
-  color: #777;
-  margin-top: 5px;
-}
-
-.tool {
-  min-width: 34px;
-  height: 34px;
-  border: 1px solid transparent;
-  background: transparent;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.tool:hover {
-  background: #e5e5e5;
-  border-color: #ccc;
-}
-
-.tool.big {
-  font-size: 17px;
-}
-
-select {
-  height: 34px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: white;
-  padding: 0 8px;
-}
-
-.color-input {
-  width: 34px;
-  height: 34px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
-
-/* WORKSPACE */
-.workspace {
-  padding: 25px;
-  min-height: calc(100vh - 230px);
-}
-
-/* PAPER */
-.paper {
-  background: white;
-  width: 850px;
-  min-height: 1100px;
-  margin: 0 auto;
-  padding: 70px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.15);
-}
-
-/* TITLE */
-.article-title {
-  width: 100%;
-  border: none;
-  outline: none;
-  font-size: 32px;
-  font-weight: bold;
-  margin-bottom: 35px;
-  color: #111;
-}
-
-/* EDITOR */
-.editor {
-  min-height: 850px;
-  outline: none;
-  font-size: 17px;
-  line-height: 1.8;
-  color: #222;
-}
-
-.editor:empty:before {
-  content: "Mulai menulis artikel di sini...";
-  color: #aaa;
-}
-
-.editor img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 20px auto;
-}
-
-.editor table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 20px 0;
-}
-
-.editor td,
-.editor th {
-  border: 1px solid #888;
-  padding: 8px;
-}
-
-/* BOTTOM */
-.bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 52px;
-  background: #111118;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-  padding: 0 20px;
-}
-
-.bottom button {
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.draft {
-  background: #444;
-  color: white;
-}
-
-.publish {
-  background: #ff315d;
-  color: white;
-}
-
-/* STATUS */
-.status {
-  position: fixed;
-  bottom: 65px;
-  right: 20px;
-  background: #222;
-  color: white;
-  padding: 10px 15px;
-  border-radius: 6px;
-  display: none;
-  font-size: 13px;
-}
-
-/* RESPONSIVE */
-@media(max-width: 900px) {
-
-  .paper {
-    width: 100%;
-    padding: 35px;
+@media(max-width:600px){
+  .layout{flex-direction:column}
+  .sidebar{
+    width:100%;
+    border-right:none;
+    border-bottom:1px solid #292933;
   }
-
-  .workspace {
-    padding: 10px;
+  .menu{
+    display:inline-block;
+    margin-right:5px;
   }
-
-  .article-title {
-    font-size: 26px;
-  }
-
-}
-
-@media(max-width: 600px) {
-
-  .topbar {
-    padding: 0 12px;
-  }
-
-  .back {
-    display: none;
-  }
-
-  .filebar input {
-    width: 100%;
-  }
-
-  .paper {
-    padding: 25px;
-    min-height: 900px;
-  }
-
-  .ribbon {
-    padding: 8px;
-  }
-
+  .header{padding:0 18px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- TOP -->
-<div class="topbar">
-
-  <div class="logo">
-    LESUIK<span>GAME</span>
-  </div>
-
-  <a href="index.html" class="back">
-    ← Dashboard
+<header class="header">
+  <a href="../index.html" style="text-decoration:none;color:white">
+    <div class="logo">LESUIK<span>GAME</span></div>
   </a>
 
-</div>
+  <a class="back" href="../index.html">
+    ← Kembali ke Website
+  </a>
+</header>
 
+<div class="layout">
 
-<!-- FILE BAR -->
-<div class="filebar">
+  <aside class="sidebar">
 
-  <span class="file-icon">📄</span>
+    <div class="sidebar-title">Admin Panel</div>
 
-  <input
-    type="text"
-    id="fileName"
-    value="Artikel Baru"
-    placeholder="Nama artikel"
-  >
+    <a href="index.html" class="menu active">
+      🏠 Dashboard
+    </a>
 
-</div>
+    <a href="artikel.html" class="menu">
+      📝 Artikel
+    </a>
 
+    <a href="#" class="menu">
+      🖼️ Highlight
+    </a>
 
-<!-- TABS -->
-<div class="tabs">
+    <a href="#" class="menu">
+      🎮 Game
+    </a>
 
-  <div class="tab active" onclick="showTab('home')">
-    Home
-  </div>
+    <a href="#" class="menu">
+      🖼️ Wallpaper
+    </a>
 
-  <div class="tab" onclick="showTab('insert')">
-    Insert
-  </div>
+    <a href="#" class="menu">
+      🎬 Video
+    </a>
 
-  <div class="tab" onclick="showTab('format')">
-    Format
-  </div>
+  </aside>
 
-  <div class="tab" onclick="showTab('view')">
-    View
-  </div>
+  <main class="content">
 
-</div>
+    <div class="welcome">
+      <h1>Dashboard Admin</h1>
+      <p>Kelola konten LesuikGame dari satu tempat.</p>
+    </div>
 
+    <div class="cards">
 
-<!-- HOME RIBBON -->
-<div class="ribbon" id="homeRibbon">
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>Artikel</h3>
+        <p>Buat dan kelola artikel atau berita gaming.</p>
+      </div>
 
-  <!-- CLIPBOARD -->
-  <div class="ribbon-group">
+      <div class="card">
+        <div class="card-icon">🖼️</div>
+        <h3>Highlight</h3>
+        <p>Kelola konten highlight yang tampil di halaman utama.</p>
+      </div>
 
-    <div class="ribbon-buttons">
+      <div class="card">
+        <div class="card-icon">🎮</div>
+        <h3>Game</h3>
+        <p>Tambahkan dan kelola halaman game.</p>
+      </div>
 
-      <button class="tool big" onclick="pasteText()" title="Paste">
-        📋
-      </button>
+      <div class="card">
+        <div class="card-icon">🖼️</div>
+        <h3>Wallpaper</h3>
+        <p>Kelola koleksi wallpaper gaming.</p>
+      </div>
 
-      <button class="tool" onclick="undo()" title="Undo">
-        ↶
-      </button>
+      <div class="card">
+        <div class="card-icon">🎬</div>
+        <h3>Video</h3>
+        <p>Kelola video dan konten gaming.</p>
+      </div>
 
-      <button class="tool" onclick="redo()" title="Redo">
-        ↷
-      </button>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Pengaturan</h3>
+        <p>Pengaturan website akan tersedia di sini.</p>
+      </div>
 
     </div>
 
-    <div class="group-title">
-      Clipboard
-    </div>
+    <div class="quick">
 
-  </div>
+      <h2>Aksi Cepat</h2>
 
+      <div class="actions">
 
-  <!-- FONT -->
-  <div class="ribbon-group">
+        <a href="artikel.html" class="button">
+          + Buat Artikel
+        </a>
 
-    <div class="ribbon-buttons">
+        <a href="#" class="button secondary">
+          + Tambah Highlight
+        </a>
 
-      <select onchange="format('fontName',this.value)">
-        <option value="Arial">Arial</option>
-        <option value="Verdana">Verdana</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Tahoma">Tahoma</option>
-        <option value="Times New Roman">Times New Roman</option>
-      </select>
+        <a href="#" class="button secondary">
+          + Tambah Game
+        </a>
 
-      <select onchange="format('fontSize',this.value)">
-        <option value="3">12</option>
-        <option value="4">14</option>
-        <option value="5">18</option>
-        <option value="6">24</option>
-        <option value="7">32</option>
-      </select>
-
-      <button class="tool" onclick="format('bold')" title="Bold">
-        <b>B</b>
-      </button>
-
-      <button class="tool" onclick="format('italic')" title="Italic">
-        <i>I</i>
-      </button>
-
-      <button class="tool" onclick="format('underline')" title="Underline">
-        <u>U</u>
-      </button>
-
-      <input
-        type="color"
-        class="color-input"
-        onchange="format('foreColor',this.value)"
-        title="Warna teks"
-      >
-
-      <input
-        type="color"
-        class="color-input"
-        onchange="format('hiliteColor',this.value)"
-        title="Highlight"
-      >
+      </div>
 
     </div>
 
-    <div class="group-title">
-      Font
-    </div>
-
-  </div>
-
-
-  <!-- PARAGRAPH -->
-  <div class="ribbon-group">
-
-    <div class="ribbon-buttons">
-
-      <button class="tool" onclick="format('justifyLeft')">
-        ≡
-      </button>
-
-      <button class="tool" onclick="format('justifyCenter')">
-        ≡
-      </button>
-
-      <button class="tool" onclick="format('justifyRight')">
-        ≡
-      </button>
-
-      <button class="tool" onclick="format('insertUnorderedList')">
-        •☰
-      </button>
-
-      <button class="tool" onclick="format('insertOrderedList')">
-        1☰
-      </button>
-
-      <button class="tool" onclick="format('outdent')">
-        ⇤
-      </button>
-
-      <button class="tool" onclick="format('indent')">
-        ⇥
-      </button>
-
-    </div>
-
-    <div class="group-title">
-      Paragraph
-    </div>
-
-  </div>
-
-
-  <!-- STYLES -->
-  <div class="ribbon-group">
-
-    <div class="ribbon-buttons">
-
-      <button class="tool" onclick="heading('h1')">
-        H1
-      </button>
-
-      <button class="tool" onclick="heading('h2')">
-        H2
-      </button>
-
-      <button class="tool" onclick="heading('h3')">
-        H3
-      </button>
-
-      <button class="tool" onclick="heading('p')">
-        ¶
-      </button>
-
-      <button class="tool" onclick="format('formatBlock','blockquote')">
-        ❝
-      </button>
-
-    </div>
-
-    <div class="group-title">
-      Styles
-    </div>
-
-  </div>
+  </main>
 
 </div>
-
-
-<!-- INSERT RIBBON -->
-<div class="ribbon" id="insertRibbon" style="display:none">
-
-  <div class="ribbon-group">
-
-    <div class="ribbon-buttons">
-
-      <button class="tool big" onclick="insertImage()">
-        🖼️
-      </button>
-
-      <button class="tool big" onclick="addLink()">
-        🔗
-      </button>
-
-      <button class="tool big" onclick="insertTable()">
-        ▦
-      </button>
-
-      <button class="tool big" onclick="insertLine()">
-        ─
-      </button>
-
-    </div>
-
-    <div class="group-title">
-      Media
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- FORMAT RIBBON -->
-<div class="ribbon" id="formatRibbon" style="display:none">
-
-  <div class="ribbon-group">
-
-    <div class="ribbon-buttons">
-
-      <button class="tool" onclick="heading('h1')">
-        Heading 1
-      </button>
-
-      <button class="tool" onclick="heading('h2')">
-        Heading 2
-      </button>
-
-      <button class="tool" onclick="heading('h3')">
-        Heading 3
-      </button>
-
-      <button class="tool" onclick="heading('p')">
-        Paragraph
-      </button>
-
-    </div>
-
-    <div class="group-title">
-      Text Style
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- VIEW RIBBON -->
-<div class="ribbon" id="viewRibbon" style="display:none">
-
-  <div class="ribbon-group">
-
-    <div class="ribbon-buttons">
-
-      <button class="tool" onclick="toggleFullscreen()">
-        ⛶ Fullscreen
-      </button>
-
-      <button class="tool" onclick="previewArticle()">
-        👁 Preview
-      </button>
-
-    </div>
-
-    <div class="group-title">
-      View
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- WORKSPACE -->
-<div class="workspace">
-
-  <div class="paper" id="paper">
-
-    <input
-      type="text"
-      class="article-title"
-      id="articleTitle"
-      placeholder="Judul Artikel"
-    >
-
-    <div
-      class="editor"
-      id="editor"
-      contenteditable="true"
-    ></div>
-
-  </div>
-
-</div>
-
-
-<!-- STATUS -->
-<div class="status" id="status"></div>
-
-
-<!-- BOTTOM -->
-<div class="bottom">
-
-  <button class="draft" onclick="saveDraft()">
-    💾 Simpan Draft
-  </button>
-
-  <button class="publish" onclick="publish()">
-    🚀 Publish
-  </button>
-
-</div>
-
-
-<script>
-
-/* FORMAT */
-function format(command, value = null) {
-
-  document.execCommand(
-    command,
-    false,
-    value
-  );
-
-  document.getElementById("editor").focus();
-
-}
-
-
-/* HEADING */
-function heading(type) {
-
-  document.execCommand(
-    "formatBlock",
-    false,
-    type
-  );
-
-  document.getElementById("editor").focus();
-
-}
-
-
-/* UNDO */
-function undo() {
-
-  document.execCommand(
-    "undo"
-  );
-
-}
-
-
-/* REDO */
-function redo() {
-
-  document.execCommand(
-    "redo"
-  );
-
-}
-
-
-/* LINK */
-function addLink() {
-
-  const url = prompt(
-    "Masukkan URL:"
-  );
-
-  if (!url) return;
-
-  document.execCommand(
-    "createLink",
-    false,
-    url
-  );
-
-}
-
-
-/* IMAGE */
-function insertImage() {
-
-  const input =
-    document.createElement("input");
-
-  input.type = "file";
-  input.accept = "image/*";
-
-  input.onchange = function() {
-
-    const file =
-      input.files[0];
-
-    if (!file) return;
-
-    const reader =
-      new FileReader();
-
-    reader.onload = function(e) {
-
-      document.execCommand(
-        "insertImage",
-        false,
-        e.target.result
-      );
-
-    };
-
-    reader.readAsDataURL(file);
-
-  };
-
-  input.click();
-
-}
-
-
-/* TABLE */
-function insertTable() {
-
-  const rows =
-    prompt("Jumlah baris:", "3");
-
-  const cols =
-    prompt("Jumlah kolom:", "3");
-
-  if (!rows || !cols) return;
-
-  let html =
-    '<table>';
-
-  for (
-    let i = 0;
-    i < Number(rows);
-    i++
-  ) {
-
-    html += "<tr>";
-
-    for (
-      let j = 0;
-      j < Number(cols);
-      j++
-    ) {
-
-      html += "<td>&nbsp;</td>";
-
-    }
-
-    html += "</tr>";
-
-  }
-
-  html += "</table>";
-
-  document.execCommand(
-    "insertHTML",
-    false,
-    html
-  );
-
-}
-
-
-/* LINE */
-function insertLine() {
-
-  document.execCommand(
-    "insertHorizontalRule"
-  );
-
-}
-
-
-/* PASTE TEXT */
-function pasteText() {
-
-  navigator.clipboard
-    .readText()
-    .then(text => {
-
-      document.execCommand(
-        "insertText",
-        false,
-        text
-      );
-
-    });
-
-}
-
-
-/* TABS */
-function showTab(tab) {
-
-  document
-    .querySelectorAll(".tab")
-    .forEach(el => {
-
-      el.classList.remove("active");
-
-    });
-
-
-  document
-    .querySelectorAll(".ribbon")
-    .forEach(el => {
-
-      el.style.display = "none";
-
-    });
-
-
-  const tabs =
-    document.querySelectorAll(".tab");
-
-  if (tab === "home") {
-
-    tabs[0].classList.add("active");
-
-    document.getElementById(
-      "homeRibbon"
-    ).style.display = "flex";
-
-  }
-
-  if (tab === "insert") {
-
-    tabs[1].classList.add("active");
-
-    document.getElementById(
-      "insertRibbon"
-    ).style.display = "flex";
-
-  }
-
-  if (tab === "format") {
-
-    tabs[2].classList.add("active");
-
-    document.getElementById(
-      "formatRibbon"
-    ).style.display = "flex";
-
-  }
-
-  if (tab === "view") {
-
-    tabs[3].classList.add("active");
-
-    document.getElementById(
-      "viewRibbon"
-    ).style.display = "flex";
-
-  }
-
-}
-
-
-/* SAVE DRAFT */
-function saveDraft() {
-
-  const data = {
-
-    title:
-      document.getElementById(
-        "articleTitle"
-      ).value,
-
-    content:
-      document.getElementById(
-        "editor"
-      ).innerHTML,
-
-    fileName:
-      document.getElementById(
-        "fileName"
-      ).value
-
-  };
-
-
-  localStorage.setItem(
-    "lesuikgame_article_draft",
-    JSON.stringify(data)
-  );
-
-
-  showStatus(
-    "✅ Draft berhasil disimpan"
-  );
-
-}
-
-
-/* LOAD DRAFT */
-window.onload = function() {
-
-  const saved =
-    localStorage.getItem(
-      "lesuikgame_article_draft"
-    );
-
-  if (!saved) return;
-
-  try {
-
-    const data =
-      JSON.parse(saved);
-
-    document.getElementById(
-      "articleTitle"
-    ).value =
-      data.title || "";
-
-    document.getElementById(
-      "editor"
-    ).innerHTML =
-      data.content || "";
-
-    document.getElementById(
-      "fileName"
-    ).value =
-      data.fileName ||
-      "Artikel Baru";
-
-  } catch(e) {
-
-    console.log(e);
-
-  }
-
-};
-
-
-/* STATUS */
-function showStatus(text) {
-
-  const status =
-    document.getElementById("status");
-
-  status.innerText = text;
-
-  status.style.display = "block";
-
-  setTimeout(function() {
-
-    status.style.display = "none";
-
-  }, 2500);
-
-}
-
-
-/* PUBLISH */
-function publish() {
-
-  const title =
-    document.getElementById(
-      "articleTitle"
-    ).value.trim();
-
-  const content =
-    document.getElementById(
-      "editor"
-    ).innerHTML.trim();
-
-
-  if (!title) {
-
-    alert(
-      "Silakan masukkan judul artikel."
-    );
-
-    return;
-
-  }
-
-
-  if (!content) {
-
-    alert(
-      "Silakan tulis isi artikel."
-    );
-
-    return;
-
-  }
-
-
-  showStatus(
-    "🚀 Artikel siap dipublish"
-  );
-
-}
-
-
-/* FULLSCREEN */
-function toggleFullscreen() {
-
-  const paper =
-    document.getElementById("paper");
-
-  if (!document.fullscreenElement) {
-
-    paper.requestFullscreen();
-
-  } else {
-
-    document.exitFullscreen();
-
-  }
-
-}
-
-
-/* PREVIEW */
-function previewArticle() {
-
-  const title =
-    document.getElementById(
-      "articleTitle"
-    ).value;
-
-  const content =
-    document.getElementById(
-      "editor"
-    ).innerHTML;
-
-
-  const win =
-    window.open(
-      "",
-      "_blank"
-    );
-
-  win.document.write(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>${title}</title>
-      <style>
-        body {
-          max-width: 850px;
-          margin: 50px auto;
-          padding: 20px;
-          font-family: Arial;
-          line-height: 1.8;
-        }
-
-        h1 {
-          font-size: 36px;
-        }
-
-        img {
-          max-width: 100%;
-        }
-
-        table {
-          border-collapse: collapse;
-          width: 100%;
-        }
-
-        td {
-          border: 1px solid #888;
-          padding: 8px;
-        }
-      </style>
-    </head>
-
-    <body>
-
-      <h1>${title}</h1>
-
-      ${content}
-
-    </body>
-    </html>
-  `);
-
-  win.document.close();
-
-}
-
-</script>
 
 </body>
 </html>
