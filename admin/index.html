@@ -1,349 +1,915 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LesuikGame Admin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<title>LesuikGame Admin</title>
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: #fff;
-      min-height: 100vh;
-    }
+<style>
 
-    .header {
-      height: 70px;
-      background: #111118;
-      border-bottom: 1px solid #292933;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 30px;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f3f5;
+  color: #222;
+}
 
-    .logo span {
-      color: #ff315d;
-    }
 
-    .back {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 14px;
-    }
+/* =========================
+   TOP BAR
+========================= */
 
-    .back:hover {
-      color: #fff;
-    }
+.topbar {
+  height: 60px;
+  background: #111118;
+  color: white;
 
-    .layout {
-      display: flex;
-      min-height: calc(100vh - 70px);
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    .sidebar {
-      width: 240px;
-      background: #111118;
-      border-right: 1px solid #292933;
-      padding: 25px 15px;
-    }
+  padding: 0 25px;
+}
 
-    .sidebar-title {
-      color: #666;
-      font-size: 12px;
-      text-transform: uppercase;
-      margin: 0 12px 15px;
-      letter-spacing: 1px;
-    }
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .menu {
-      display: block;
-      padding: 13px 15px;
-      margin-bottom: 5px;
-      border-radius: 8px;
-      color: #bbb;
-      text-decoration: none;
-      font-size: 15px;
-    }
+.logo span {
+  color: #ff315d;
+}
 
-    .menu:hover,
-    .menu.active {
-      background: #1e1e28;
-      color: #fff;
-    }
+.home-btn {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
 
-    .menu.active {
-      border-left: 3px solid #ff315d;
-    }
+.home-btn:hover {
+  color: white;
+}
 
-    .content {
-      flex: 1;
-      padding: 35px;
-      max-width: 1200px;
-    }
 
-    .welcome {
-      margin-bottom: 30px;
-    }
+/* =========================
+   LAYOUT
+========================= */
 
-    .welcome h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
+.layout {
+  display: flex;
+  min-height: calc(100vh - 60px);
+}
 
-    .welcome p {
-      color: #888;
-    }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-bottom: 35px;
-    }
+/* =========================
+   SIDEBAR
+========================= */
 
-    .card {
-      background: #15151d;
-      border: 1px solid #282832;
-      border-radius: 12px;
-      padding: 25px;
-    }
+.sidebar {
+  width: 240px;
+  background: #18181f;
+  color: white;
+  padding: 25px 15px;
+}
 
-    .card-icon {
-      font-size: 30px;
-      margin-bottom: 15px;
-    }
+.sidebar-title {
+  font-size: 12px;
+  color: #888;
+  margin: 5px 12px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-    .card h3 {
-      margin-bottom: 8px;
-    }
+.menu {
+  display: block;
+  text-decoration: none;
+  color: #ccc;
+  padding: 13px 14px;
+  border-radius: 7px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
 
-    .card p {
-      color: #777;
-      font-size: 14px;
-      line-height: 1.5;
-    }
+.menu:hover {
+  background: #27272f;
+  color: white;
+}
 
-    .quick {
-      background: #15151d;
-      border: 1px solid #282832;
-      border-radius: 12px;
-      padding: 25px;
-    }
+.menu.active {
+  background: #ff315d;
+  color: white;
+}
 
-    .quick h2 {
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
 
-    .actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+/* =========================
+   MAIN
+========================= */
 
-    .button {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      background: #ff315d;
-      color: #fff;
-      font-weight: bold;
-      font-size: 14px;
-    }
+.main {
+  flex: 1;
+  padding: 35px;
+  overflow-x: hidden;
+}
 
-    .button:hover {
-      opacity: 0.85;
-    }
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
 
-    .button.secondary {
-      background: #24242e;
-      color: #ccc;
-    }
+.page-description {
+  color: #777;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
 
-    @media (max-width: 800px) {
-      .sidebar {
-        width: 190px;
-      }
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
+/* =========================
+   STAT CARDS
+========================= */
 
-      .content {
-        padding: 25px 20px;
-      }
-    }
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
 
-    @media (max-width: 600px) {
-      .layout {
-        flex-direction: column;
-      }
+.stat-card {
+  background: white;
+  border-radius: 10px;
+  padding: 22px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
 
-      .sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #292933;
-      }
+.stat-icon {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
 
-      .menu {
-        display: inline-block;
-        margin-right: 5px;
-      }
+.stat-number {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
-      .header {
-        padding: 0 18px;
-      }
-    }
-  </style>
+.stat-label {
+  color: #777;
+  font-size: 13px;
+}
+
+
+/* =========================
+   CONTENT GRID
+========================= */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 25px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   QUICK ACTION
+========================= */
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px;
+
+  background: #f6f6f7;
+  border-radius: 8px;
+
+  text-decoration: none;
+  color: #222;
+
+  border: 1px solid #eee;
+}
+
+.action:hover {
+  background: #eee;
+}
+
+.action-icon {
+  font-size: 24px;
+}
+
+.action-text strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.action-text span {
+  font-size: 12px;
+  color: #888;
+}
+
+
+/* =========================
+   RECENT
+========================= */
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 0;
+
+  border-bottom: 1px solid #eee;
+}
+
+.recent-item:last-child {
+  border-bottom: none;
+}
+
+.recent-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.recent-info {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 5px 9px;
+  border-radius: 20px;
+  background: #eee;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  margin-top: 35px;
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 1000px) {
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media(max-width: 700px) {
+
+  .sidebar {
+    width: 190px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media(max-width: 550px) {
+
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar-title {
+    display: none;
+  }
+
+  .menu {
+    display: inline-block;
+    margin-right: 4px;
+  }
+
+  .main {
+    padding: 15px;
+  }
+
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar {
+    padding: 0 15px;
+  }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <header class="header">
-    <div class="logo">
-      LESUIK<span>GAME</span>
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div class="topbar">
+
+  <div
+    class="logo"
+    onclick="confirmHome()"
+    title="Kembali ke Home"
+  >
+    LESUIK<span>GAME</span>
+  </div>
+
+  <a
+    href="../index.html"
+    class="home-btn"
+  >
+    ← Kembali ke Home
+  </a>
+
+</div>
+
+
+<!-- =========================
+     LAYOUT
+========================= -->
+
+<div class="layout">
+
+
+  <!-- =========================
+       SIDEBAR
+  ========================= -->
+
+  <aside class="sidebar">
+
+    <div class="sidebar-title">
+      Admin Panel
     </div>
 
-    <a class="back" href="../index.html">
-      ← Kembali ke Website
+
+    <a
+      href="index.html"
+      class="menu active"
+    >
+      🏠 Dashboard
     </a>
-  </header>
 
-  <div class="layout">
 
-    <aside class="sidebar">
+    <a
+      href="artikel.html"
+      class="menu"
+    >
+      📝 Artikel
+    </a>
 
-      <div class="sidebar-title">
-        Admin Panel
-      </div>
 
-      <a href="#" class="menu active">
-        🏠 Dashboard
-      </a>
+    <a
+      href="../index.html"
+      class="menu"
+    >
+      ⭐ Highlight
+    </a>
 
-      <a href="#" class="menu">
-        📝 Artikel
-      </a>
 
-      <a href="#" class="menu">
-        🖼️ Highlight
-      </a>
+    <a
+      href="../index.html"
+      class="menu"
+    >
+      🎮 Game
+    </a>
 
-      <a href="#" class="menu">
-        🎮 Game
-      </a>
 
-      <a href="#" class="menu">
-        🖼️ Wallpaper
-      </a>
+    <a
+      href="../index.html"
+      class="menu"
+    >
+      🖼️ Wallpaper
+    </a>
 
-      <a href="#" class="menu">
-        🎬 Video
-      </a>
 
-    </aside>
+    <a
+      href="../index.html"
+      class="menu"
+    >
+      🎬 Video
+    </a>
 
-    <main class="content">
+  </aside>
 
-      <div class="welcome">
-        <h1>Dashboard Admin</h1>
-        <p>
-          Kelola konten LesuikGame dari satu tempat.
-        </p>
-      </div>
 
-      <div class="cards">
+  <!-- =========================
+       MAIN
+  ========================= -->
 
-        <div class="card">
-          <div class="card-icon">📝</div>
-          <h3>Artikel</h3>
-          <p>
-            Buat dan kelola artikel atau berita gaming.
-          </p>
+  <main class="main">
+
+
+    <h1 class="page-title">
+      Dashboard
+    </h1>
+
+    <p class="page-description">
+      Kelola konten website LesuikGame dari sini.
+    </p>
+
+
+    <!-- =========================
+         STAT
+    ========================= -->
+
+    <div class="stats">
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          📝
         </div>
 
-        <div class="card">
-          <div class="card-icon">🖼️</div>
-          <h3>Highlight</h3>
-          <p>
-            Kelola konten highlight yang tampil di halaman utama.
-          </p>
+        <div class="stat-number">
+          0
         </div>
 
-        <div class="card">
-          <div class="card-icon">🎮</div>
-          <h3>Game</h3>
-          <p>
-            Tambahkan dan kelola halaman game.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🖼️</div>
-          <h3>Wallpaper</h3>
-          <p>
-            Kelola koleksi wallpaper gaming.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">🎬</div>
-          <h3>Video</h3>
-          <p>
-            Kelola video dan konten gaming.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="card-icon">⚙️</div>
-          <h3>Pengaturan</h3>
-          <p>
-            Pengaturan website akan tersedia di sini.
-          </p>
+        <div class="stat-label">
+          Artikel
         </div>
 
       </div>
 
-      <div class="quick">
 
-        <h2>Aksi Cepat</h2>
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          ⭐
+        </div>
+
+        <div class="stat-number">
+          0
+        </div>
+
+        <div class="stat-label">
+          Highlight
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          🎮
+        </div>
+
+        <div class="stat-number">
+          0
+        </div>
+
+        <div class="stat-label">
+          Game
+        </div>
+
+      </div>
+
+
+      <div class="stat-card">
+
+        <div class="stat-icon">
+          🖼️
+        </div>
+
+        <div class="stat-number">
+          0
+        </div>
+
+        <div class="stat-label">
+          Wallpaper
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- =========================
+         CONTENT
+    ========================= -->
+
+    <div class="content-grid">
+
+
+      <!-- QUICK ACTION -->
+
+      <div class="card">
+
+        <div class="card-title">
+          Aksi Cepat
+        </div>
+
 
         <div class="actions">
 
-          <a href="#" class="button">
-            + Buat Artikel
+
+          <a
+            href="artikel.html"
+            class="action"
+          >
+
+            <div class="action-icon">
+              📝
+            </div>
+
+            <div class="action-text">
+
+              <strong>
+                Buat Artikel
+              </strong>
+
+              <span>
+                Tulis berita atau artikel baru
+              </span>
+
+            </div>
+
           </a>
 
-          <a href="#" class="button secondary">
-            + Tambah Highlight
+
+          <a
+            href="../index.html"
+            class="action"
+          >
+
+            <div class="action-icon">
+              ⭐
+            </div>
+
+            <div class="action-text">
+
+              <strong>
+                Kelola Highlight
+              </strong>
+
+              <span>
+                Atur highlight terbaru
+              </span>
+
+            </div>
+
           </a>
 
-          <a href="#" class="button secondary">
-            + Tambah Game
+
+          <a
+            href="../index.html"
+            class="action"
+          >
+
+            <div class="action-icon">
+              🎮
+            </div>
+
+            <div class="action-text">
+
+              <strong>
+                Kelola Game
+              </strong>
+
+              <span>
+                Tambahkan game baru
+              </span>
+
+            </div>
+
           </a>
+
+
+          <a
+            href="../index.html"
+            class="action"
+          >
+
+            <div class="action-icon">
+              🖼️
+            </div>
+
+            <div class="action-text">
+
+              <strong>
+                Upload Wallpaper
+              </strong>
+
+              <span>
+                Tambahkan wallpaper
+              </span>
+
+            </div>
+
+          </a>
+
 
         </div>
 
       </div>
 
-    </main>
+
+      <!-- AKTIVITAS -->
+
+      <div class="card">
+
+        <div class="card-title">
+          Aktivitas Terbaru
+        </div>
+
+
+        <div class="recent-item">
+
+          <div>
+
+            <div class="recent-name">
+              Artikel
+            </div>
+
+            <div class="recent-info">
+              Belum ada artikel
+            </div>
+
+          </div>
+
+          <div class="badge">
+            0
+          </div>
+
+        </div>
+
+
+        <div class="recent-item">
+
+          <div>
+
+            <div class="recent-name">
+              Highlight
+            </div>
+
+            <div class="recent-info">
+              Belum ada data
+            </div>
+
+          </div>
+
+          <div class="badge">
+            0
+          </div>
+
+        </div>
+
+
+        <div class="recent-item">
+
+          <div>
+
+            <div class="recent-name">
+              Game
+            </div>
+
+            <div class="recent-info">
+              Belum ada data
+            </div>
+
+          </div>
+
+          <div class="badge">
+            0
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer">
+      LesuikGame Admin Panel
+    </div>
+
+
+  </main>
+
+</div>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div
+  id="homeModal"
+  style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+  "
+>
+
+  <div
+    style="
+      width:380px;
+      max-width:90%;
+      background:white;
+      border-radius:12px;
+      padding:30px;
+      text-align:center;
+    "
+  >
+
+    <div style="font-size:40px;">
+      🏠
+    </div>
+
+    <h2 style="margin:15px 0 10px;">
+      Kembali ke Home?
+    </h2>
+
+    <p style="color:#777;margin-bottom:25px;">
+      Anda yakin ingin kembali ke halaman utama LesuikGame?
+    </p>
+
+    <button
+      onclick="closeHomeModal()"
+      style="
+        border:none;
+        background:#eee;
+        padding:11px 20px;
+        border-radius:6px;
+        cursor:pointer;
+        margin-right:6px;
+      "
+    >
+      Batal
+    </button>
+
+    <button
+      onclick="goHome()"
+      style="
+        border:none;
+        background:#ff315d;
+        color:white;
+        padding:11px 20px;
+        border-radius:6px;
+        cursor:pointer;
+      "
+    >
+      Ya, Kembali
+    </button>
 
   </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   KONFIRMASI HOME
+========================= */
+
+function confirmHome() {
+
+  document.getElementById(
+    "homeModal"
+  ).style.display = "flex";
+
+}
+
+
+/* =========================
+   TUTUP MODAL
+========================= */
+
+function closeHomeModal() {
+
+  document.getElementById(
+    "homeModal"
+  ).style.display = "none";
+
+}
+
+
+/* =========================
+   KEMBALI HOME
+========================= */
+
+function goHome() {
+
+  window.location.href =
+    "../index.html";
+
+}
+
+
+/* =========================
+   KLIK LUAR MODAL
+========================= */
+
+document
+  .getElementById("homeModal")
+  .addEventListener(
+    "click",
+    function(e) {
+
+      if (e.target === this) {
+
+        closeHomeModal();
+
+      }
+
+    }
+  );
+
+
+/* =========================
+   ESC
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(e) {
+
+    if (e.key === "Escape") {
+
+      closeHomeModal();
+
+    }
+
+  }
+);
+
+</script>
+
 
 </body>
 </html>
