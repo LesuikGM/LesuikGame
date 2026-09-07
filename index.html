@@ -1,0 +1,232 @@
+index.html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LesuikGame</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f1117;
+            color: white;
+        }
+
+        header {
+            background: #171a23;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #292d38;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .hero {
+            padding: 70px 6%;
+            text-align: center;
+            background: linear-gradient(135deg, #171a23, #242938);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #bbb;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .section-title {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #191c25;
+            border: 1px solid #292d38;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .image {
+            height: 150px;
+            background: #292d38;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .ad {
+            margin: 40px 0;
+            height: 100px;
+            border: 1px dashed #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            text-align: center;
+            background: #171a23;
+            color: #777;
+        }
+
+        @media (max-width: 700px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">LesuikGame</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Game</a>
+        <a href="#">Wallpaper</a>
+        <a href="#">Highlight</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>LesuikGame</h1>
+    <p>Game, wallpaper, highlight dan video pendek.</p>
+</section>
+
+<div class="container">
+
+    <div class="ad">
+        SLOT IKLAN
+    </div>
+
+    <h2 class="section-title">🔥 Highlight Terbaru</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="image">VIDEO</div>
+            <div class="card-content">
+                <h3>Highlight Gaming</h3>
+                <p>Video highlight terbaru.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="image">VIDEO</div>
+            <div class="card-content">
+                <h3>Epic Moment</h3>
+                <p>Momen terbaik dalam game.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="image">VIDEO</div>
+            <div class="card-content">
+                <h3>Short Gaming</h3>
+                <p>Video pendek pilihan.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <h2 class="section-title">🖼️ Wallpaper Terbaru</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="image">WALLPAPER</div>
+            <div class="card-content">
+                <h3>Gaming Wallpaper</h3>
+                <p>Wallpaper untuk PC dan HP.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="image">WALLPAPER</div>
+            <div class="card-content">
+                <h3>Game Wallpaper</h3>
+                <p>Koleksi wallpaper gaming.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="image">WALLPAPER</div>
+            <div class="card-content">
+                <h3>HD Wallpaper</h3>
+                <p>Wallpaper berkualitas tinggi.</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 LesuikGame
+</footer>
+
+</body>
+</html>
